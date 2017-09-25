@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 
 
-DATABASE = 'database.db'
+DATABASE = './database/database.db'
 
 def connect_db():
     return sqlite3.connect(DATABASE)
@@ -28,7 +28,7 @@ def after_request(response):
 
 def init_db():
     with closing(connect_db()) as db:
-        with app.open_resource('schema.sql') as f:
+        with app.open_resource('./database/schema.sql') as f:
             db.cursor().executescript(f.read())
         db.commit()
 
