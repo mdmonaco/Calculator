@@ -30,10 +30,20 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
       return false;
     });
   });
+  $(function() {
+    $('#show').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/show', {
+      }, function(data) {
+        alert(data);
+      });
+      return false;
+    });
+  });
 </script>
 	<input type="" name="calculo" id="calculo">
 	<input type="" name="result" id="result">
 	<button id="calculate">Calcular</button>
   <button id="save">Guardar Sesion</button>
+  <button id="show">Mostrar operaciones</button>
 </body>
 </html>

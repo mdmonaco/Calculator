@@ -10,6 +10,11 @@ import sqlite3
 
 app = Flask(__name__)
 
+list_input = []
+list_output = []
+
+
+
 
 
 DATABASE = './database/database.db'
@@ -46,6 +51,8 @@ def insert(table, fields=(), values=()):
     cur.close()
     return id
 
+def inputs(lista,elem):
+    return lista.append(elem) 
 
 @app.route('/')
 def vista():
@@ -56,16 +63,25 @@ def log(a,b):
 
 @app.route('/save')
 def	save():
-	insert('calculos', ('input','output'), ('prueba1','prueba1'))
-	return jsonify("Se han guardado los datos")
+    for i in range(len(list_input)):  #Guarda todos los inputs y outpus en la base
+	   insert('calculos', ('input','output'), (list_input[i],list_output[i]))
+    return jsonify("Se han guardado los datos")
+
+@app.route('/show')
+def show():
+    return jsonify("mostrar datos")
 
 @app.route('/calcular/')
 def calcular():
-	calculo = request.args.get('a',0,type=str)
-	if calculo== '':
-		return jsonify(0)
+    calculo = request.args.get('a',0,type=str)
+    if calculo== '':
+        return jsonify(0)
 	#insert('calculos', ('input','output'), (calculo,eval(calculo))
-	return jsonify(eval(calculo))
+	#return jsonify(eval(caculo))
+    list_input.append(calculo)    #Agrega el input a una lista
+    list_output.append(eval(calculo))   #Agrega el output a una lista
+    return jsonify(eval(calculo))
+
 
 
 if __name__ == '__main__':
