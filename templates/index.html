@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello perras</title>
+</head>
+<body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
+<script type=text/javascript>
+$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  $(function() {
+    $('#calculate').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/calcular', {
+        a: $('input[name="calculo"]').val()
+      }, function(data) {
+      	console.log(data)
+        $("#result").val(data);
+      });
+      return false;
+    });
+  });
+  $(function() {
+    $('#save').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/save', {
+        a: $('input[name="calculo"]').val()
+      }, function(data) {
+        console.log(data)
+        alert(data);
+      });
+      return false;
+    });
+  });
+</script>
+	<input type="" name="calculo" id="calculo">
+	<input type="" name="result" id="result">
+	<button id="calculate">Calcular</button>
+  <button id="save">Guardar Sesion</button>
+</body>
+</html>
