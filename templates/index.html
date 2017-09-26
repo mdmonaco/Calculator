@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hello perras</title>
+	<title>Calculadora</title>
 </head>
 <body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -36,7 +36,14 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
       $.getJSON($SCRIPT_ROOT + '/show', {
         a: $('input[name="session"]').val()
       }, function(data) {
-        alert(data);
+        $('#resu_table').empty()
+        var content = "<table>";
+        content += '<tr><th>Inputs</th><th>Ouputs</th></tr>'
+        for(i=0; i<data.length; i++){
+          content += '<tr><td>' + data[i][2] + '</td><td>' + data[i][3] + '</td></tr>' ;
+        }
+        content += "</table>"
+        $('#resu_table').append(content);
       });
       return false;
     });
@@ -79,21 +86,7 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
       <button id="save">Guardar</button>
       <button id="show">Restaurar</button>
     </div>
-    <div class="row marginTop">
-      <table>
-        <tr>
-          <th>Inputs</th>
-          <th>Ouputs</th> 
-        </tr>
-        <tr>
-          <td>2+2</td>
-          <td>4</td> 
-        </tr>
-        <tr>
-          <td>3-1</td>
-          <td>2</td> 
-        </tr>
-      </table>
+    <div id="resu_table" class="row marginTop">
     </div>
   </div>
 </body>
