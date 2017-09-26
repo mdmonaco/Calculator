@@ -33,18 +33,26 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
   });
   $(function() {
     $('#show').bind('click', function() {
-      $.getJSON($SCRIPT_ROOT + '/show', {
-        a: $('input[name="session"]').val()
-      }, function(data) {
-        $('#resu_table').empty()
-        var content = "<table>";
-        content += '<tr><th>Inputs</th><th>Ouputs</th></tr>'
-        for(i=0; i<data.length; i++){
-          content += '<tr><td>' + data[i][2] + '</td><td>' + data[i][3] + '</td></tr>' ;
-        }
-        content += "</table>"
-        $('#resu_table').append(content);
-      });
+      if ($('input[name="session"]').val().length <= 0) {
+        alert('Debe ingresar el nombre de la session para poder recuperar una sesion');
+      } else {
+        $.getJSON($SCRIPT_ROOT + '/show', {
+          a: $('input[name="session"]').val()
+        }, function(data) {
+          $('#resu_table').empty()
+          if (data.length <= 0) {
+            alert('No existe el usuario ' + $('input[name="session"]').val())
+          } else {
+            var content = "<table>";
+            content += '<tr><th>Inputs</th><th>Ouputs</th></tr>'
+            for(i=0; i<data.length; i++){
+              content += '<tr><td>' + data[i][2] + '</td><td>' + data[i][3] + '</td></tr>' ;
+            }
+            content += "</table>"
+            $('#resu_table').append(content);
+            } 
+        });
+      }
       return false;
     });
   });
