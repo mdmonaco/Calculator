@@ -15,8 +15,6 @@ list_output = []
 
 
 
-
-
 DATABASE = './database/database.db'
 
 def connect_db():
@@ -51,25 +49,38 @@ def insert(table, fields=(), values=()):
     cur.close()
     return id
 
-def inputs(lista,elem):
-    return lista.append(elem) 
+def select(session):
+    # g.db is the database connection
+    list_input = []
+    cur = g.db.execute("SELECT * FROM calculos WHERE session='%s'" % session)
+    rows = cur.fetchall()
+    cur.close()
+    return jsonify(rows)
+
+
+def log(a,b):
+    return math.log(a,b)
 
 @app.route('/')
 def vista():
     return render_template('index.html')
 
-def log(a,b):
-	return math.log(a,b)
 
 @app.route('/save')
 def	save():
+    if request.args.get('a'," ",type=str)=="":
+        return jsonify("Debe ingresar el nombre de la session para poder guardar")
+    session = request.args.get('a'," ",type=str).lower()
     for i in range(len(list_input)):  #Guarda todos los inputs y outpus en la base
-	   insert('calculos', ('input','output'), (list_input[i],list_output[i]))
-    return jsonify("Se han guardado los datos")
+	   insert('calculos', ('session','input','output'), (session,list_input[i],list_output[i]))
+    return jsonify("Se han guardado los datos en la sesion ")
 
 @app.route('/show')
 def show():
-    return jsonify("mostrar datos")
+    if request.args.get('a'," ",type=str)=="":
+        return jsonify("Debe ingresar el nombre de la session para poder recuperar una sesion")
+    return select(request.args.get('a'," ",type=str))
+    #return jsonify("mostrar datos")
 
 @app.route('/calcular/')
 def calcular():

@@ -22,10 +22,10 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
   $(function() {
     $('#save').bind('click', function() {
       $.getJSON($SCRIPT_ROOT + '/save', {
-        a: $('input[name="calculo"]').val()
+        a: $('input[name="session"]').val()
       }, function(data) {
         console.log(data)
-        alert(data);
+        alert(data + $('input[name="session"]').val());
       });
       return false;
     });
@@ -33,6 +33,7 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
   $(function() {
     $('#show').bind('click', function() {
       $.getJSON($SCRIPT_ROOT + '/show', {
+        a: $('input[name="session"]').val()
       }, function(data) {
         alert(data);
       });
@@ -40,10 +41,19 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     });
   });
 </script>
-	<input type="" name="calculo" id="calculo">
-	<input type="" name="result" id="result">
-	<button id="calculate">Calcular</button>
-  <button id="save">Guardar Sesion</button>
-  <button id="show">Mostrar operaciones</button>
+  <div style="width: 500px">
+    <div style="margin-left: 50px; margin-top: 50px; margin-bottom: 20px">
+      Input: <input type="" name="calculo" id="calculo">
+      Output: <input type="" name="result" id="result" disabled>
+    </div>
+    <div style="text-align: center; margin-bottom: 20px">
+      <button id="calculate">Calcular</button>
+    </div>
+    <div>
+      Session: <input type="" name="session" id="session">
+    </div>
+    <button id="save">Guardar Sesion</button>
+    <button id="show">Mostrar operaciones</button>  
+  </div>
 </body>
 </html>
