@@ -1,0 +1,20 @@
+tr {
+  padding: 2px 10px ;
+}
+td, th {
+  padding: 2px 10px ;
+  text-align: center;
+}
+table {
+  justify-content: center;
+  display: flex;
+}
+.marginTop {
+  margin-top: 10px;
+}
+.margin {
+  margin: 20px 0;
+}
+th, td {
+  border: 1px solid black;
+}

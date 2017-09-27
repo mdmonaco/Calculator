@@ -71,7 +71,7 @@ def	save():
     if request.args.get('a'," ",type=str)=="":
         return jsonify("Debe ingresar el nombre de la session para poder guardar")
     session = request.args.get('a'," ",type=str).lower()
-    for i in range(len(list_input)):  #Guarda todos los inputs y outpus en la base
+    for i in range(len(list_output)):  #Guarda todos los inputs y outpus en la base
 	   insert('calculos', ('session','input','output'), (session,list_input[i],list_output[i]))
     return jsonify("Se han guardado los datos en la sesion ")
 

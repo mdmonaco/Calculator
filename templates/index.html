@@ -5,6 +5,7 @@
 </head>
 <body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./static/style.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
 <script type=text/javascript>
@@ -57,28 +58,6 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     });
   });
 </script>
-<style type="text/css">
-    tr {
-      padding: 2px 10px ;
-    }
-    td, th {
-      padding: 2px 10px ;
-      text-align: center;
-    }
-    table {
-      justify-content: center;
-      display: flex;
-    }
-    .marginTop {
-      margin-top: 10px;
-    }
-    .margin {
-      margin: 20px 0;
-    }
-    th, td {
-      border: 1px solid black;
-    }
-  </style>
   <div class="container text-center">
     <div class="row margin"> 
       Input: <input type="text" name="calculo" id="calculo">
