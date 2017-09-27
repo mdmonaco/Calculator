@@ -32,6 +32,12 @@ Instalar para python, Flask(microfram)
 http://flask.pocoo.org/docs/0.12/installation/
 
 
+Es necesario tener pip instalado
+
+https://pip.pypa.io/en/stable/installing/
+
+
+
 ## Getting Started deploy
 
 1. Crear un archivo .db llamado "database" en la carpeta "data"
