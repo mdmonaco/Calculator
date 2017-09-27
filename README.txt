@@ -43,10 +43,16 @@ https://pip.pypa.io/en/stable/installing/
 1. Crear un archivo .db llamado "database" en la carpeta "data"
 
 2. Ejecutar por unica vez base
+		
+		python base.py
 
-3. Ejecutar el programa calculator.py
+3. Ejecutar el programa "calculator.py"
 
-4. Ingresar a la direccion http://localhost:5000/
+		python calculator.py
+
+4. Desde cuaquier navegador, ingresar a la url:
+
+		http://localhost:5000/
 
 ## Authors
 
