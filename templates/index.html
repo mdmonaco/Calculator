@@ -31,9 +31,17 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
   $(function() {
     $('#save').bind('click', function() {
       $.getJSON($SCRIPT_ROOT + '/save', {
-        a: $('input[name="session"]').val()
+        a: $('#session').val()
       }, function(data) {
-        alert(data + $('input[name="session"]').val());
+        if (data=='save') {
+          alert("Se han guardado los datos correctamente en la sesion " + $('#session').val());
+          $('#result').val("");
+          $('#calculo').val("");         
+        } 
+        else {
+          alert(data)
+        }
+        
       });
       return false;
     });

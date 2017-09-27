@@ -82,9 +82,14 @@ def	save():
     if request.args.get('a'," ",type=str)=="":
         return jsonify("Debe ingresar el nombre de la session para poder guardar")
     session = request.args.get('a'," ",type=str).lower()
+    if len(list_input)==0 :
+        return jsonify("No tiene datos para guardar")
     for i in range(len(list_output)):  #Guarda todos los inputs y outpus en la base
 	   insert('calculos', ('session','input','output'), (session,list_input[i],list_output[i]))
-    return jsonify("Se han guardado los datos en la sesion ")
+    del list_output[:]
+    del list_input[:]
+    return jsonify('save')
+    # return jsonify("Se han guardado los datos en la sesion ")
 
 @app.route('/show')
 def show():
