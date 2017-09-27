@@ -15,7 +15,7 @@ list_output = []
 
 
 
-DATABASE = './database/database.db'
+DATABASE = './data/database.db'
 
 def connect_db():
     return sqlite3.connect(DATABASE)
@@ -31,7 +31,7 @@ def after_request(response):
 
 def init_db():
     with closing(connect_db()) as db:
-        with app.open_resource('./database/schema.sql') as f:
+        with app.open_resource('./data/schema.sql') as f:
             db.cursor().executescript(f.read())
         db.commit()
 
