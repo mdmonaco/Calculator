@@ -35,6 +35,13 @@ def init_db():
             db.cursor().executescript(f.read())
         db.commit()
 
+# Funcion insert
+# Descripcion: Genera el query de la insercion de datos en una tabla determinada y lo ejecuta
+# Parametros: String(tabla)
+# Parametros: Tupla(Campos)
+# Parametros: Tupla(Valores)
+# Respuesta: Devuelve el id de la ultima linea de datos insertada
+
 def insert(table, fields=(), values=()):
     # g.db is the database connection
     cur = g.db.cursor()
@@ -65,6 +72,10 @@ def log(a,b):
 def vista():
     return render_template('index.html')
 
+# Api metodo GET route /save
+# Descripcion: Guarda los datos almacenados temporalmente en una sesion especifica
+# Parametros: String(session)
+# Respuesta: Resultado del guardado de los datos en la base de datos
 
 @app.route('/save')
 def	save():
