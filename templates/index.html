@@ -13,7 +13,7 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
   $(function() {
     $('#calculate').bind('click', function() {
       $.getJSON($SCRIPT_ROOT + '/calcular', {
-        a: $('input[name="calculo"]').val()
+        a: $('#calculo').val()
       }, function(data) {
         if (data=='Error1') {
           alert("No ingreso ningun valor para calcular") 
@@ -48,15 +48,15 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
   });
   $(function() {
     $('#show').bind('click', function() {
-      if ($('input[name="session"]').val().length <= 0) {
+      if ($('#session').val().length <= 0) {
         alert('Debe ingresar el nombre de la session para poder recuperar una sesion');
       } else {
         $.getJSON($SCRIPT_ROOT + '/show', {
-          a: $('input[name="session"]').val()
+          a: $('#session').val()
         }, function(data) {
           $('#resu_table').empty()
           if (data.length <= 0) {
-            alert('No existe el usuario ' + $('input[name="session"]').val())
+            alert('No existe el usuario ' + $('#session').val())
           } else {
             var content = "<table>";
             content += '<tr><th>Inputs</th><th>Ouputs</th></tr>'

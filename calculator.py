@@ -89,7 +89,6 @@ def	save():
     del list_output[:]
     del list_input[:]
     return jsonify('save')
-    # return jsonify("Se han guardado los datos en la sesion ")
 
 @app.route('/show')
 def show():
@@ -110,11 +109,7 @@ def calcular():
         list_input.append(calculo)    #Agrega el input a una lista
         list_output.append(resul_calculo)   #Agrega el output a una lista
         return jsonify(resul_calculo)
-    # if calculo== '':
-    #     return jsonify(0)
-    # list_input.append(calculo)    #Agrega el input a una lista
-    # list_output.append(eval(calculo))   #Agrega el output a una lista
-    # return jsonify(eval(calculo))
+
 
 
 
