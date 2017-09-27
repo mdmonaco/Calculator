@@ -90,16 +90,26 @@ def	save():
 def show():
     if request.args.get('a'," ",type=str)=="":
         return jsonify("Debe ingresar el nombre de la session para poder recuperar una sesion")
-    return select(request.args.get('a'," ",type=str))
+    return select(request.args.get('a'," ",type=str).lower())
 
 @app.route('/calcular/')
 def calcular():
     calculo = request.args.get('a',0,type=str)
     if calculo== '':
-        return jsonify(0)
-    list_input.append(calculo)    #Agrega el input a una lista
-    list_output.append(eval(calculo))   #Agrega el output a una lista
-    return jsonify(eval(calculo))
+        return jsonify('Error1')
+    try:
+        resul_calculo = eval(calculo) 
+    except Exception as e:
+        return jsonify('Error2')
+    else:
+        list_input.append(calculo)    #Agrega el input a una lista
+        list_output.append(resul_calculo)   #Agrega el output a una lista
+        return jsonify(resul_calculo)
+    # if calculo== '':
+    #     return jsonify(0)
+    # list_input.append(calculo)    #Agrega el input a una lista
+    # list_output.append(eval(calculo))   #Agrega el output a una lista
+    # return jsonify(eval(calculo))
 
 
 

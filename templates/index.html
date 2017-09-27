@@ -15,7 +15,15 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
       $.getJSON($SCRIPT_ROOT + '/calcular', {
         a: $('input[name="calculo"]').val()
       }, function(data) {
-        $("#result").val(data);
+        if (data=='Error1') {
+          alert("No ingreso ningun valor para calcular") 
+        }
+        else if (data=='Error2'){
+          alert("La formula ingresada no es valida") 
+        }
+        else {
+          $("#result").val(data);  
+        } 
       });
       return false;
     });
