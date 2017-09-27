@@ -1,7 +1,7 @@
 # Calculadora
 
 Calculadora simple con las siguientes funcionalidades:
-la calculadora debe soportar:
+
 							suma, 
 							resta,  
 							multiplicación, 
@@ -9,8 +9,10 @@ la calculadora debe soportar:
 							logaritmo con números de punto flotante.
 							Ejemplo: (2+2)*log 10/3
 
-se tiene que poder persistir una sesión de cálculo.
-se tiene que poder recuperar una sesión de cálculo almacenada.
+							*** PARA EL CALCULO DE LOG 10/3 EL PARAMETRO DEBE SER PASADO DE LA SIGUIENTE MANERA log(10,3) ***
+
+Persiste una sesión de cálculo.
+Recupera una sesión de cálculo almacenada.
 
 Ejemplo:
 input: 2+2
