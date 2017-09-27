@@ -58,4 +58,4 @@ https://pip.pypa.io/en/stable/installing/
 
 ## Authors
 
-* **Mario Monaco** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Mario Monaco** 
