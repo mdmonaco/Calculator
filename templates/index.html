@@ -15,7 +15,6 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
       $.getJSON($SCRIPT_ROOT + '/calcular', {
         a: $('input[name="calculo"]').val()
       }, function(data) {
-      	console.log(data)
         $("#result").val(data);
       });
       return false;
@@ -26,7 +25,6 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
       $.getJSON($SCRIPT_ROOT + '/save', {
         a: $('input[name="session"]').val()
       }, function(data) {
-        console.log(data)
         alert(data + $('input[name="session"]').val());
       });
       return false;

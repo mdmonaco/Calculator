@@ -80,15 +80,12 @@ def show():
     if request.args.get('a'," ",type=str)=="":
         return jsonify("Debe ingresar el nombre de la session para poder recuperar una sesion")
     return select(request.args.get('a'," ",type=str))
-    #return jsonify("mostrar datos")
 
 @app.route('/calcular/')
 def calcular():
     calculo = request.args.get('a',0,type=str)
     if calculo== '':
         return jsonify(0)
-	#insert('calculos', ('input','output'), (calculo,eval(calculo))
-	#return jsonify(eval(caculo))
     list_input.append(calculo)    #Agrega el input a una lista
     list_output.append(eval(calculo))   #Agrega el output a una lista
     return jsonify(eval(calculo))
